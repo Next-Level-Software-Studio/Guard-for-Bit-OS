@@ -1,0 +1,2 @@
+# Guard-for-Bit-OS
+A Next Level Software Studio project.
