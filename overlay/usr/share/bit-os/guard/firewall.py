@@ -4,7 +4,7 @@ from pathlib import Path
 with open("/usr/share/bit-os/guard/well-known-ports.json", "r") as f:
     non_official = json.load(f)
 
-official = None
+official = None #Placeholder, não apagar.
 
 def _getservice(port = int):
     if port <= 1023:
