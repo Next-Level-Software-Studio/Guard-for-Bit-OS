@@ -40,8 +40,8 @@ def objecttype(data):
         elif data in data_devices:
             return "data_device"
         
-        elif type(data) == int:
-            return ""
+        elif (type(data) == int) and (data >= 0) and (data <= 65535):
+            return "port"
 
         else:
             return "unknown"

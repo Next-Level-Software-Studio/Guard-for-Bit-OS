@@ -9,9 +9,14 @@ SRC_URI="https://github.com/Next-Level-Software-Studio/Guard-for-Bit-OS/archive/
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS="amd64"
-IUSE="doc ufw"
+IUSE="clamav doc nftables rar selinux"
 
 RDEPEND="dev-lang/python
 	dev-python/python-magic
-	ufw? ( net-firewall/ufw )"
+	clamav? ( 
+		rar? ( app-antivirus/clamav[rar] )
+		!rar? ( app-antivirus/clamav )
+	)
+	nftables? ( net-firewall/nftables[python] )
+	clamav? ( selinux? ( sec-policy/selinux-clamav ) )"
 DEPEND="${RDEPEND}"
