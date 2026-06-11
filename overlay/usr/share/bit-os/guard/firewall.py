@@ -1,7 +1,7 @@
 import json
 from pathlib import Path
-with open(Path(""), "r") as f:
-    content = json.load(f)
+with open("/usr/share/bit-os/guard/non-official-ports-services.json", "r") as f:
+    non_official = json.load(f)
 
 def on():
     pass
