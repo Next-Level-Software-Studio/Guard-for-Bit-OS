@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 import argparse, sys, os, magic, mimetypes
 from pathlib import Path
-import pydatabase
+from pyapi import gentoo_packages
 
 # Bibliotecas adicionais instaladas:
 # dev-python/python-magic
