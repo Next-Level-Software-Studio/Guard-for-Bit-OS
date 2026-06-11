@@ -12,11 +12,11 @@ KEYWORDS="amd64"
 IUSE="clamav doc nftables rar selinux"
 
 RDEPEND="dev-lang/python
-	dev-python/python-magic
-	clamav? ( 
-		rar? ( app-antivirus/clamav[rar] )
-		!rar? ( app-antivirus/clamav )
-	)
-	nftables? ( net-firewall/nftables[python] )
-	clamav? ( selinux? ( sec-policy/selinux-clamav ) )"
+    dev-python/python-magic
+    clamav? ( 
+        rar? ( app-antivirus/clamav[clamapp,clamsubmit,metadata-analysis-api,rar] )
+        !rar? ( app-antivirus/clamav[clamapp,clamsubmit,metadata-analysis-api] )
+    )
+    nftables? ( net-firewall/nftables[python] )
+    clamav? ( selinux? ( sec-policy/selinux-clamav ) )"
 DEPEND="${RDEPEND}"
