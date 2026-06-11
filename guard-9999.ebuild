@@ -1,4 +1,5 @@
 # Copyright 1999-2026 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -9,11 +10,13 @@ SRC_URI="https://github.com/Next-Level-Software-Studio/Guard-for-Bit-OS/archive/
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS="amd64"
-IUSE="bzip2 clamav doc nftables rar selinux split-usr xml"
+IUSE="audit bzip2 clamav doc nftables rar selinux split-usr xml"
 
 RDEPEND="dev-lang/python
     dev-python/python-magic
     !net-firewall/ufw
+    audit? ( sys-process/audit )
+    split-usr? ( sys-process/audit[split-usr] )
     clamav? ( 
         rar? ( 
             xml? ( 
@@ -39,6 +42,8 @@ RDEPEND="dev-lang/python
     nftables? ( net-firewall/nftables[python] )
     selinux? ( 
         sys-libs/libselinux[python]
+        sys-apps/policycoreutils[pam]
+        audit? ( sys-apps/policycoreutils[audit] )
         split-usr? ( sys-apps/policycoreutils[split-usr] )
         clamav? ( sec-policy/selinux-clamav )
     )"
