@@ -9,13 +9,32 @@ SRC_URI="https://github.com/Next-Level-Software-Studio/Guard-for-Bit-OS/archive/
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS="amd64"
-IUSE="clamav doc nftables rar selinux"
+IUSE="bzip2 clamav doc nftables rar selinux xml"
 
 RDEPEND="dev-lang/python
     dev-python/python-magic
+    !net-firewall/ufw
     clamav? ( 
-        rar? ( app-antivirus/clamav[clamapp,clamsubmit,metadata-analysis-api,rar] )
-        !rar? ( app-antivirus/clamav[clamapp,clamsubmit,metadata-analysis-api] )
+        rar? ( 
+            xml? ( 
+                bzip2? ( app-antivirus/clamav[bzip2,clamapp,clamsubmit,metadata-analysis-api,rar,system-mspack,xml] )
+                !bzip2? ( app-antivirus/clamav[clamapp,clamsubmit,metadata-analysis-api,rar,system-mspack,xml] )
+            )
+            !xml? ( 
+                bzip2? ( app-antivirus/clamav[bzip2,clamapp,clamsubmit,metadata-analysis-api,rar,system-mspack] )
+                !bzip2? ( app-antivirus/clamav[clamapp,clamsubmit,metadata-analysis-api,rar,system-mspack] )
+            )
+        )
+        !rar? ( 
+            xml? ( 
+                bzip2? ( app-antivirus/clamav[bzip2,clamapp,clamsubmit,metadata-analysis-api,system-mspack,xml] )
+                !bzip2? ( app-antivirus/clamav[clamapp,clamsubmit,metadata-analysis-api,system-mspack,xml] )
+            )
+            !xml? ( 
+                bzip2? ( app-antivirus/clamav[bzip2,clamapp,clamsubmit,metadata-analysis-api,system-mspack] )
+                !bzip2? ( app-antivirus/clamav[clamapp,clamsubmit,metadata-analysis-api,system-mspack] )
+            )
+        )
     )
     nftables? ( net-firewall/nftables[python] )
     clamav? ( selinux? ( sec-policy/selinux-clamav ) )"
