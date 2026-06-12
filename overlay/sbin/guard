@@ -2,7 +2,6 @@
 # -*- coding: utf-8 -*-
 import argparse, sys, os, magic, mimetypes
 from pathlib import Path
-from pyapi import gentoo_packages
 
 # Bibliotecas adicionais instaladas:
 # dev-python/python-magic
@@ -44,7 +43,7 @@ def objecttype(data):
             return "unknown"
 
 def main():
-    if os.
+    
     parser = argparse.ArgumentParser(description="Simplified Guard CLI Tool")
     subparsers = parser.add_subparsers(dest="command", required=True)
 
