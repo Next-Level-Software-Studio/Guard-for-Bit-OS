@@ -16,15 +16,11 @@ def objecttype(data):
         print(f"What you want to scan needs to be a string, not a {type(data).__name__}.")
 
     elif type(data) == str:
-
-        protocols = ["https://", "http://"]
         # Create the list using only the real block device names
         data_devices = [f"/dev/{d}" for d in os.listdir('/sys/block/') if d.startswith(('sd', 'nvme', 'vd'))]
 
-        if data.startswith(tuple(protocols)):
-            return "url"
         
-        elif Path(data).is_file():
+        if Path(data).is_file():
             mimetypes.init(files=[]) # Avoid using the system's MIME types database
             
             detector = magic.Magic(mime=True)
@@ -48,6 +44,7 @@ def objecttype(data):
             return "unknown"
 
 def main():
+    if os.
     parser = argparse.ArgumentParser(description="Simplified Guard CLI Tool")
     subparsers = parser.add_subparsers(dest="command", required=True)
 
