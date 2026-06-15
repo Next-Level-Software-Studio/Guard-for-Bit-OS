@@ -1,4 +1,4 @@
-import json
+import sys, syslog, audit
 def main(search = str):
     with open('/etc/guard/danger-level.toml', 'r', encoding='utf-8') as f:
         i = search + "="
@@ -10,4 +10,4 @@ def main(search = str):
         elif notexists is True:
             pass
         else:
-            print(f"Danger level of {search} isn't defined.", file=)
+            sys.exit(1)
