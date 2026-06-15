@@ -22,6 +22,7 @@ RDEPEND="dev-lang/python
 		pam? ( sys-process/audit[split-usr?] )
 		sudo? ( sys-process/audit[split-usr?] )
 		selinux? ( sys-process/audit[split-usr?] )
+		sys-process/audit[python]
 	)
 	clamav? (
 		app-antivirus/clamav[clamapp,clamsubmit,iconv,metadata-analysis-api,system-mspack,bzip2?,rar?,xml?]
