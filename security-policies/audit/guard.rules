@@ -1,0 +1,3 @@
+# Por favor faça com que a string seja sempre "guard_files_security".
+
+-w /etc/guard/danger-level.toml -p wa -k guard_files_security
