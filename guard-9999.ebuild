@@ -9,7 +9,7 @@ SRC_URI="https://github.com/Next-Level-Software-Studio/Guard-for-Bit-OS/archive/
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS="amd64"
-IUSE="audit bzip2 clamav doc nftables openrc pam rar selinux split-usr sudo systemd xml chkrootkit rkhunter tor"
+IUSE="audit bzip2 clamav doc nftables openrc pam rar selinux split-usr sudo systemd xml chkrootkit rkhunter tor pip portage"
 
 # Garante que exatamente um dos dois deve estar ativo
 REQUIRED_USE="^^ ( openrc systemd )"
@@ -43,3 +43,28 @@ RDEPEND="dev-lang/python
 	)
 	chkrootkit? ( app-forensics/chkrootkit[cron] )"
 DEPEND="${RDEPEND}"
+
+src_prepare() {
+	default # Aplica patches padrão do Gentoo ou correções do usuário se houverem
+
+	# Remove explicitamente os arquivos solicitados para não irem para a instalação
+	rm -f .gitattributes || die
+	rm -f .gitignore || die
+	rm -f *.ebuild || die
+	rm -f metadata.xml || die
+}
+
+src_install() {
+
+	if ! use portage; then
+		rm -f "${T}/overlay/usr/share/guard/extensions/scan_packages/portage.py" || die
+	fi
+
+	if ! use pip; then
+		rm -f "${T}/overlay/usr/share/guard/extensions/scan_packages/pip.py" || die
+	fi
+
+	if ! use audit; then
+		rm -f "${T}/overlay/usr/share/guard/extensions/scan_logs/audit.py" || die
+	fi
+}
