@@ -52,19 +52,16 @@ src_prepare() {
 	rm -f .gitignore || die
 	rm -f *.ebuild || die
 	rm -f metadata.xml || die
-}
-
-src_install() {
 
 	if ! use portage; then
-		rm -f "${T}/overlay/usr/share/guard/extensions/scan_packages/portage.py" || die
+		rm -f "${S}/overlay/usr/share/guard/extensions/scan_packages/portage.py" || die
 	fi
 
 	if ! use pip; then
-		rm -f "${T}/overlay/usr/share/guard/extensions/scan_packages/pip.py" || die
+		rm -f "${S}/overlay/usr/share/guard/extensions/scan_packages/pip.py" || die
 	fi
 
 	if ! use audit; then
-		rm -f "${T}/overlay/usr/share/guard/extensions/scan_logs/audit.py" || die
+		rm -f "${S}/overlay/usr/share/guard/extensions/scan_logs/audit.py" || die
 	fi
 }
