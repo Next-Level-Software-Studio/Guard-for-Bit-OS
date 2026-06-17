@@ -1,4 +1,4 @@
-import requests, sys
+import requests, sys, whois
 def url(data = str, level = int):
     # verificar se a URL existe
     answer = requests.head(data, allow_redirects=True, timeout=5)
