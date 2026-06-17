@@ -1,5 +1,5 @@
 def main(search=str):
-    with open('/etc/guard/danger-level.toml', 'r', encoding='utf-8') as f:
+    with open('/etc/guard/danger-level.conf', 'r', encoding='utf-8') as f:
         i = search + "="
         
         # Lê o ficheiro linha a linha diretamente
