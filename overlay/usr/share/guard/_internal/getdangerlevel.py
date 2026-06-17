@@ -1,13 +1,11 @@
-import sys, syslog, audit
-def main(search = str):
+def main(search=str):
     with open('/etc/guard/danger-level.toml', 'r', encoding='utf-8') as f:
         i = search + "="
-        notexists = all(not line.startswith(i) for line in f)
-        if notexists is False:
-            for line in f:
-                if line.startswith(i):
-                    return
-        elif notexists is True:
-            pass
-        else:
-            sys.exit(1)
+        
+        # Lê o ficheiro linha a linha diretamente
+        for line in f:
+            if line.startswith(i):
+                return line.removeprefix(i).strip() # O .strip() limpa quebras de linha ou espaços
+    return None 
+if __name__ == "__main__":
+    print(main(search="oi"))
