@@ -4,8 +4,7 @@
 EAPI=8
 
 HOMEPAGE="https://github.com/Next-Level-Software-Studio/Guard-for-Bit-OS"
-SRC_URI="https://github.com/Next-Level-Software-Studio/Guard-for-Bit-OS/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
-
+EGIT_REPO_URI="https://github.com/Next-Level-Software-Studio/Guard-for-Bit-OS.git"
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS="amd64"
